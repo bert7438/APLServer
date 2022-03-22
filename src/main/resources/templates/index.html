@@ -2,9 +2,13 @@
 <html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>APL</title>
+    <title>APLServer</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 <body>
 <p th:utext="${welcome}">Приветственный текст</p>
+<h1>Добро пожаловать!</h1>
+<p>На этом сайте вы можете просмотреть информацию о посещаемости и успеваемости</p>
+<a href="users">Показать всех студентов</a>
 </body>
 </html>

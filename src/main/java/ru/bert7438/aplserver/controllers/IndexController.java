@@ -11,7 +11,8 @@ public class IndexController {
 
     @GetMapping
     public String index(Model model){
-        model.addAttribute("welcome", "Main Page");
+        model.addAttribute("welcome", "Добро пожаловать на сервер" +
+                " по ведению списков успеваемости и посещаемости!");
         return "index";
     }
 }
