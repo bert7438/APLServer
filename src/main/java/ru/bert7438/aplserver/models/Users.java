@@ -20,7 +20,7 @@ public class Users {
     private String name;
     @Column(name = "surname")
     private String surname;
-    @Column(name = "group")
+    @Column(name = "groupp")
     private String group;
 
 }
