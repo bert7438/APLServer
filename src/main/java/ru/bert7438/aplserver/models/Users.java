@@ -14,6 +14,7 @@ import javax.persistence.*;
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private int id;
     @Column(name = "name")
     private String name;
@@ -21,4 +22,5 @@ public class Users {
     private String surname;
     @Column(name = "group")
     private String group;
+
 }

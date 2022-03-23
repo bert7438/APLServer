@@ -29,4 +29,14 @@ public class Progress {
     private String visitLecture;
     @Column(name = "id_user")
     private int idUser;
+
+    public Progress(String lessonName, String lectureName, int lesson, int lecture, String visitLesson, String visitLecture, int idUser) {
+        this.lessonName = lessonName;
+        this.lectureName = lectureName;
+        this.lesson = lesson;
+        this.lecture = lecture;
+        this.visitLesson = visitLesson;
+        this.visitLecture = visitLecture;
+        this.idUser = idUser;
+    }
 }
