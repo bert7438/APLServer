@@ -1,6 +1,7 @@
 package ru.bert7438.aplserver.repo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import ru.bert7438.aplserver.models.Progress;
 
@@ -11,4 +12,6 @@ import java.util.Optional;
 public interface ProgressRepo extends JpaRepository<Progress, Integer> {
     List<Progress> findAll();
     Optional<Progress> findById(int id);
+
+    List<Progress> findProgressesByIdUserEquals(int userId);
 }

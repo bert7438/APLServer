@@ -6,6 +6,14 @@
     <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 <body>
+<ul th:each="user:${users}">
+    <li th:utext="${user.surname}+' '+${user.name}+', '+${user.group}">
+
+    </li>
+</ul>
+<ol th:each="prog:${progress}">
+    <li th:utext="${prog.getLessonName()}">
+</ol>
 
 </body>
 </html>

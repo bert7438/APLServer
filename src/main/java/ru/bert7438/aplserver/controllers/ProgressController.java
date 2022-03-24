@@ -9,6 +9,11 @@ import ru.bert7438.aplserver.models.Users;
 import ru.bert7438.aplserver.repo.ProgressRepo;
 import ru.bert7438.aplserver.repo.UserRepo;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 
 @Controller
 public class ProgressController {
@@ -21,8 +26,17 @@ public class ProgressController {
     public String progress_lessons(Model model){
         Iterable<Progress> progress = progressRepo.findAll();
         Iterable<Users> users = userRepo.findAll();
+        Map<String, ArrayList<Progress>> attrMap = new HashMap<>();
+        int ind = 0;
+        for(Users i: users){
+            ArrayList<Progress> progressList = (ArrayList<Progress>) progressRepo.findProgressesByIdUserEquals(i.getId());
+            String n = "us"+ ind;
+            attrMap.put(n, progressList);
+            ind++;
+        }
         model.addAttribute("progress", progress);
         model.addAttribute("users", users);
+        model.addAllAttributes(attrMap);
         return "progress_lessons_edit";
     }
 
