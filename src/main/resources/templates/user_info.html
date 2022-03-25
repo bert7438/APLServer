@@ -7,5 +7,13 @@
 </head>
 <body>
 
+<p th:utext="${user.surname}+' '+${user.name}+', '+${user.group}"></p>
+<table th:each="prog:${progress}">
+    <tr>
+    <td th:utext="${prog.getLessonName()}">
+    <td th:utext="${prog.getVisitLecture()}"></td>
+    <td th:utext="${prog.getLesson()}"></td>
+    </tr>
+</table>
 </body>
 </html>

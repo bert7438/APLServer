@@ -4,15 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import ru.bert7438.aplserver.models.Progress;
 import ru.bert7438.aplserver.models.Users;
 import ru.bert7438.aplserver.repo.ProgressRepo;
 import ru.bert7438.aplserver.repo.UserRepo;
 
+import java.util.ArrayList;
+import java.util.Optional;
 import java.util.Random;
 
 
@@ -47,5 +46,20 @@ public class UsersController {
             progressRepo.saveAndFlush(new_progress);
         }
         return "redirect:/users";
+    }
+
+    @GetMapping("/users/{id}")
+    public String progress(@PathVariable(value = "id") Integer id, Model model){
+        if(!userRepo.existsById(id)){
+            return "redirect:/";
+        }
+        Iterable<Progress> progress = progressRepo.findAll();
+        model.addAttribute("progress", progress);
+        Optional<Users> user = userRepo.findById(id);
+        ArrayList<Users> users = new ArrayList<>();
+        user.ifPresent(users::add);
+        Users u = users.get(0);
+        model.addAttribute("user", u);
+        return "user_info";
     }
 }

@@ -12,7 +12,15 @@
     </li>
 </ul>
 <ol th:each="prog:${progress}">
-    <li th:utext="${prog.getLessonName()}">
+    <li th:utext="${prog.getLessonName()}"></li>
+    <li th:utext="${prog.getVisitLecture()}"></li>
+    <li th:utext="${prog.getLesson()}"></li>
+    <label>
+        <input type="text">
+    </label>
+    <label>
+        <input type="text">
+    </label>
 </ol>
 
 </body>
